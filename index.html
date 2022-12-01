@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index.css" media="screen and (min-width: 1243px) and (max-width: 1600px)">
     <script src="https://kit.fontawesome.com/1c9b8c0219.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./responsive.css" media="screen and (min-width: 320px) and (max-width: 1242px)">
     <title>online shop</title>
 </head>
 <body>
     <div class="header">
         <div class="dark-bar">
-            <a href="#">가입/로그인/배송지 입력 안내</a>
-            <a href="#">회원가입 10% 쿠폰 및 생일 쿠폰 지급 관련 기준 안내</a>
-            <a href="#">택배 서비스 안내 사항</a>
+            <a href="#" class="displayed">가입/로그인/배송지 입력 안내</a>
+            <a href="#" class="notdisplayed">회원가입 10% 쿠폰 및 생일 쿠폰 지급 관련 기준 안내</a>
+            <a href="#" class="notdisplayed">택배 서비스 안내 사항</a>
         </div>
         <div class="container">
             <div class="inner-menu-bar">
@@ -26,9 +27,18 @@
                 </div>
             </div>
             <div class="menu-bar">
-                <a class="logo-container">
-                    <img src="https://cdn-icons-png.flaticon.com/512/731/731962.png" alt="adidas logo">
-                </a>
+                <div class="hamburger-container">
+                        <div class="hamburger">
+                            <span class="one"></span>
+                            <span class="two"></span>
+                            <span class="three"></span>
+                        </div>
+                </div>
+                <div class="logo-container">
+                    <a href="" class="logo">
+                        <img src="https://cdn-icons-png.flaticon.com/512/731/731962.png" alt="adidas logo">
+                    </a>
+                </div>
                 <div class="interactive-menu">
                     <div class="dropdown-menu">
                         <div>
