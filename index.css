@@ -22,6 +22,7 @@ li{
     width: 100%;
     height: 30px;
     background-color: black;
+    z-index: 5;
 }
 .dark-bar a{
     font-size: 12px;
@@ -144,10 +145,56 @@ li{
     height: 800px;
 }
 .bg-1{
+    position: relative;
     background-image: url("https://www.creativefabrica.com/wp-content/uploads/2020/05/14/3D-Cube-Pattern-Background-Graphics-4115767-1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     height: 100%;
     opacity: 0.5;
+    overflow: hidden;
+}
+.bg-1 .square{
+    position: absolute;
+    width: 18%;
+    padding: 1% 1% 4% 1%;
+    border: 2px solid black;
+    aspect-ratio: 16/19;
+}
+.square.one{
+    left: 40%;
+    top: 20%;
+    transform: rotate(-5deg);
+    z-index: 2;
+    background-color: white;
+}
+.square.two{
+    left: 54%;
+    top: 3%;
+    transform: rotate(-10deg);
+    z-index: 1;
+    background-color: white;
+}
+.square.three{
+    left: 65%;
+    top: 30%;
+    transform: rotate(5deg);
+    z-index:2;
+    background-color: white;
+}
+.square.four{
+    left: 75%;
+    top: 10%;
+    transform: rotate(10deg);
+    z-index:1;
+    background-color: white;
+}
+.square div{
+    width: 100%;
+    height: 100%;
+}
+.square div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
