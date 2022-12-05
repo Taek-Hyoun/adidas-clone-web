@@ -23,6 +23,7 @@ li{
     height: 30px;
     background-color: black;
     z-index: 5;
+    font-family: 'Roboto Mono', monospace;
 }
 .dark-bar a{
     font-size: 12px;
@@ -45,6 +46,7 @@ li{
     width: 80%;
     height: 32px;
     font-size: 14px;
+    font-family: 'Roboto Mono', monospace;
 }
 .header .container .inner-menu-bar a{
     padding-right: 10px;
@@ -141,8 +143,9 @@ li{
 }
 
 .bg-1-container{
+    position: relative;
     width: 100%;
-    height: 800px;
+    height: 650px;
 }
 .bg-1{
     position: relative;
@@ -197,4 +200,61 @@ li{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.bg-2-above-p{
+    width: 100%;
+    height: 200px;
+    border: 1px solid aqua;
+}
+.bg-2{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border: 1px solid yellow;
+}
+.goto-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    width: 500px;
+    height: 250px;
+    z-index: 1;
+    font-family: 'Roboto Mono', monospace;
+}
+.goto-1 h1{
+    margin: 0;
+    font-size: 45px;
+}
+.goto-1 a{
+    display: block;
+}
+.goto-1 p{
+    font-size: 17px;
+}
+/* z-index가 작동하지 않는 이유 1.같은 스태킹, 2.포지션 속성 X 3.오파시티나 트랜스폼 때문에 4.부모의 z-index 때문에*/
+.buy-btn{
+    position: relative;
+    width: 170px;
+    aspect-ratio: 16/5;
+}
+.buy-btn span{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.buy-btn span:nth-child(1){
+    background-color: white;
+    z-index: 1;
+}
+.buy-btn span:nth-child(2){
+    z-index: 0;
+    border: 2px solid white;
+    margin-top: 1px;
+    margin-left: 1px;
 }
