@@ -1,1 +1,2 @@
-document.getElementById
+let dropdown= document.querySelector('.drop1');
+
