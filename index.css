@@ -374,7 +374,7 @@ ul{
     content: '';
     width: 0;
     height: 1px;
-    background-color: yellow;
+    background-color: black;
     display: block;
     transition: 300ms;
 }
