@@ -214,13 +214,12 @@ ul{
 .bg-2{
     position: relative;
     height: 750px;
-    border: 1px solid yellow;
     padding: 5% 8% 3% 8%;
+    background-color: rgb(183, 178, 183);
 }
 .bg-2-inner-container{
     width: 100%;
     height: 100%;
-    border: 1px solid black;
     font-family: 'Kanit', sans-serif;
 }
 .title-container{
@@ -228,12 +227,10 @@ ul{
     align-items: flex-end;
     width: 100%;
     height: 20%;
-    border: 1px solid aqua;
 }
 .slide-img-box{
     width: 100%;
     height: 80%;
-    border: 1px solid red;
     font-family: 'Kanit', sans-serif;
 }
 .inner-slide-img-box{
@@ -245,7 +242,6 @@ ul{
     height: 100%;
 }
 .main-img1, .main-img2, .main-img3, .main-img4{
-    border: 1px solid yellow;
     width: 23%;
     height: 100%;
     word-break: break-all;
@@ -253,7 +249,6 @@ ul{
 .mimg > img{
     width: 100%;
     height: 75%;
-    border: 1px solid salmon;
     object-fit: cover;
 }
 .mimg h3, .mimg p{
@@ -388,4 +383,17 @@ ul{
     line-height: 25px;
     cursor: pointer;
     margin: 0;
+}
+.mimg a div{
+    width: -moz-fit-content;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 14px;
+}
+.mimg a div::after{
+    content: '';
+    height: 1px;
+    background-color: black;
+    display: block;
+    margin-top: -3px;
 }
