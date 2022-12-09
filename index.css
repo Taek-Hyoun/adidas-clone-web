@@ -369,7 +369,7 @@ ul{
     content: '';
     width: 0;
     height: 1px;
-    background-color: black;
+    background-color: yellow;
     display: block;
     transition: 300ms;
 }
