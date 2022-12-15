@@ -1,15 +1,11 @@
-const headerheight = document.querySelector('.header');
-let last = 110;
-gap = 1;
-document.addEventListener('scroll', () => {
-    currentposition = scrollY;
+var prevScrollpos = window.scrollY;
 
-    if (Math.abs(last - currentposition) <= gap) return;
-    else if (currentposition > last || currentposition <= headerheight.clientHeight) {
-        headerheight.classList.remove("downdown");
+window.onscroll = function () {
+    var currentScrollPos = window.scrollY;
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementsByClassName("header")[0].style.top = "0";
+    } else {
+        document.getElementsByClassName("header")[0].style.top = "-110px";
     }
-    else if (currentposition < last) {
-        headerheight.classList.add("downdown");
-    }
-    last = currentposition;
-})
+    prevScrollpos = currentScrollPos;
+}
