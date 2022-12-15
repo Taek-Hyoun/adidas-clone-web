@@ -31,14 +31,6 @@ ul{
 .bb{
     margin-top: 110px;
 }
-/* @keyframes down {
-    0%{
-      transform: translateY(-110px)
-    }
-    100%{
-      transform: translateY(0px)
-    }  
-} */
 .header{
     position: fixed;
     z-index: 999;
@@ -299,7 +291,7 @@ ul{
     position: absolute;
     left: 5%;
     top: 15%;
-    width: 500px;
+    width: 33%;
     height: 250px;
     z-index: 1;
     font-family: 'Roboto Mono', monospace;
