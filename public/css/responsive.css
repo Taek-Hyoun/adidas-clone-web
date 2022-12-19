@@ -313,6 +313,11 @@ li{
         left: 35%;
         top: 2%;
     }
+    .main-img1, .main-img2, .main-img3, .main-img4{
+        width: 550px;
+        height: 100%;
+        word-break: break-all;
+    }
 }
 .goto-1 h1{
     margin: 0;

@@ -29,7 +29,6 @@ ul{
     height: 110px;
 }
 .bb{
-    width: 100%;
     margin-top: 110px;
 }
 .header{
@@ -257,7 +256,8 @@ ul{
     margin: 0;
     padding: 0;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 100%;
+    overflow: hidden;
 }
 .main-img1, .main-img2, .main-img3, .main-img4{
     width: 23%;
