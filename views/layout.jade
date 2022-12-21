@@ -1,0 +1,123 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/index.css' media='screen and (min-width: 1243px) and (max-width: 3000px)')
+    script(src='https://kit.fontawesome.com/1c9b8c0219.js' crossorigin='anonymous')
+    link(href='https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto:wght@100&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto:wght@100&display=swap' rel='stylesheet')
+    script.
+        if(window.location.pathname === '/account-login'){
+            let ele = document.querySelector('head');
+
+            let link = document.createElement('link');
+            link.setAttribute('rel', "stylesheet");
+            link.setAttribute('href', "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css")
+            link.setAttribute('integrity', "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm")
+            link.setAttribute('crossorigin', "anonymous")
+            ele.appendChild(link);
+
+            let link2 = document.createElement('link')
+            link2.setAttribute('rel', 'stylesheet')
+            link2.setAttribute('href', '/css/login.css')
+            ele.appendChild(link2);
+        }
+    link(rel='stylesheet' href='/css/responsive.css' media='screen and (min-width: 320px) and (max-width: 1242px)')
+    title online shop
+  body
+    .header
+        .dark-bar
+            a.displayed(href='#') 가입/로그인/배송지 입력 안내
+            a.notdisplayed(href='#') 회원가입 10% 쿠폰 및 생일 쿠폰 지급 관련 기준 안내
+            a.notdisplayed(href='#') 택배 서비스 안내 사항
+        .container
+            .inner-menu-bar
+                .prevent-float-mix
+                    a(href='') 도움말
+                    a(href='') 반품
+                    a(href='') 주문조회
+                    a(href='') 아디클럽 가입하기
+            .menu-bar
+                .hamburger-container
+                    .hamburger
+                        span.one
+                        span.two
+                        span.three
+                .logo-container
+                    a.logo(href='')
+                        img(src='https://cdn-icons-png.flaticon.com/512/731/731962.png' alt='adidas logo')
+                .interactive-menu
+                    .dropdown-menu
+                        div
+                            .dropdown-eventer
+                                | MEN
+                                .drop1
+                                    .grid-container
+                                        .item
+                                            // grid layout top left
+                                            .flex-item1
+                                                // flex that placed grid ele
+                                                .flex-inner-item1
+                                                    ul
+                                                        a.title(href='#')
+                                                            li
+                                                                | Mens
+                                                        a.just-btn
+                                                            li
+                                                                | New Arrival
+                                                        a.just-btn
+                                                            li
+                                                                | Y-3 collection
+                                                        a.just-btn
+                                                            li
+                                                                | Impossible Is Nothing
+                                                        a.just-btn
+                                                            li
+                                                                | Seoul
+                                        .item
+                                            .flex-item2
+                                        .item
+                                            .flex-item3
+                        div
+                            .dropdown-eventer
+                                | WOMEN
+                                .drop1
+                        div
+                            .dropdown-eventer
+                                | KIDS
+                                .drop1
+                        div
+                            .dropdown-eventer
+                                | SPORTS
+                                .drop1
+                        div
+                            .dropdown-eventer
+                                | BRAND
+                                .drop1
+                        div
+                            .dropdown-eventer
+                                | FIFA WORLD CUP
+                                .drop1
+                        div
+                            .dropdown-eventer
+                                | BLACK FRIDAY
+                                .drop1
+                .icon
+                    .search-box
+                        form(action='' method='')
+                            .input-box
+                                input(type='text')
+                                .do-search-box
+                                    i.fa-solid.fa-magnifying-glass
+                    .icon-group
+                        a(href='account-login')
+                            i.fa-solid.fa-user
+                        a(href='wishlists')
+                            i.fa-solid.fa-thumbs-up
+                        a(href='cart')
+                            i.fa-solid.fa-bag-shopping
+                        
+block content

@@ -12,10 +12,10 @@ app.get('/account-login', (req, res) => {
     res.render('account-login')
 })
 app.get('/wishlists', (req, res) => {
-    
+    res.render('wishilists');
 })
 app.get('/cart', (req, res) => {
-    
+    res.render('cart')
 })
 
 
