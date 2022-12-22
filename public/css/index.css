@@ -53,7 +53,7 @@ ul{
     font-size: 12px;
     color: white;
 }
-.header .container {
+.header .containerByTk {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@ ul{
     border-bottom: 1px solid rgb(58, 58, 58);
     background-color:lightgrey;
 }
-.header .container .inner-menu-bar{
+.header .containerByTk .inner-menu-bar{
     position: absolute;
     right: 0;
     margin-right: 2%;
@@ -73,13 +73,13 @@ ul{
     font-size: 14px;
     font-family: 'Roboto Mono', monospace;
 }
-.header .container .inner-menu-bar a{
+.header .containerByTk .inner-menu-bar a{
     padding-right: 10px;
     line-height: 32px;
 }
 
 
-.header .container .menu-bar{
+.header .containerByTk .menu-bar{
     position: absolute;
     bottom: 10px;
     display: flex;
@@ -91,16 +91,16 @@ ul{
     padding-right: 2%;
 }
 
-.header .container .menu-bar .logo-container{
+.header .containerByTk .menu-bar .logo-container{
     display: flex;
     width: 10%;
     height: 100%;
 }
-.header .container .menu-bar .logo-container > a > img{
+.header .containerByTk .menu-bar .logo-container > a > img{
     width: 60px;
 }
 
-.interactive-menu{
+.ByTk-interactive-menu{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,7 +110,7 @@ ul{
     font-family: 'Kanit', sans-serif;
 }
 
-.header .container .menu-bar .dropdown-menu{
+.header .containerByTk .menu-bar .ByTk-dropdown-menu{
     display: flex;
     align-items: end;
     gap: 20px;
@@ -333,7 +333,7 @@ ul{
 }
 
 
-.drop1{
+.ByTk-drop1{
     display: none;
     position: absolute;
     left: 0;
@@ -343,13 +343,13 @@ ul{
     background-color: darkgray;
     z-index: 3;
 }
-.dropdown-eventer:hover .drop1{
+.dropdown-eventer:hover .ByTk-drop1{
     position: absolute;
     left: 0;
     right: 0;
     display: block;
 }
-.grid-container{
+.ByTk-grid-container{
     display: grid;
     width: 100%;
     height: 100%;
