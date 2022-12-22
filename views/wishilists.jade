@@ -1,8 +1,10 @@
-extends layout 
+extends layout
 block content
+    head
+        link(rel='stylesheet' href='/css/wishilists.css')
     body.w-100.h-100
         if 1
-            div.w-fit.m-auto
+            div.ByTk-myWishListContainer.w-fit.m-auto
                 div.h2
                     | 나의 관심 목록
                 div

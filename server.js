@@ -1,3 +1,4 @@
+const db = require('./db');
 var express = require('express')
 var app = express();
 
@@ -22,3 +23,4 @@ app.get('/cart', (req, res) => {
 app.listen(3030, () => {
     console.log('The Server is running...');
 })
+
