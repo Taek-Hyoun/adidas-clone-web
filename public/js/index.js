@@ -4,9 +4,10 @@ class Product{
     constructor(){
         this._width= '150';
         this._height= '200';
-
+        
         this._product_name;
         this._product_category;
+        this._product_wish;
     }
     setProductName(name){
         this._product_name = name;
@@ -14,7 +15,9 @@ class Product{
     setProductCategory(ct){
         this._product_category = ct;
     }
-    
+    setProductWish(wish){
+        this._product_wish = wish;
+    }
     getProductName(){
         return this._product_name;
     }
@@ -41,6 +44,7 @@ for(let i = 0; i < arrOriginalShoes.length; i++){
     var imgDiv = document.createElement('div');
     var nameDiv = document.createElement('div');
     var cateDiv = document.createElement('div');
+    var wishDiv = document.createElement('div');
 
     mos.setProductName(arrOriginalShoes[i]);
     mos.setProductCategory('Mens Originals');
@@ -48,6 +52,10 @@ for(let i = 0; i < arrOriginalShoes.length; i++){
     newDiv.setAttribute('class', `shoes mos${i}`);
     imgDiv.setAttribute('class', 'img');
     nameDiv.setAttribute('class', 'product-name');
+    wishDiv.setAttribute('class', 'wishBtn');
+    wishDiv.setAttribute('onclick', 'clicking(this.parentNode)');
+    
+    wishDiv.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
     let name = document.createTextNode(mos.getProductName());
     nameDiv.appendChild(name);
     cateDiv.setAttribute('class', 'product-category');
@@ -58,4 +66,9 @@ for(let i = 0; i < arrOriginalShoes.length; i++){
     container[0].children[i].appendChild(imgDiv)
     container[0].children[i].appendChild(nameDiv)
     container[0].children[i].appendChild(cateDiv)
+    container[0].children[i].appendChild(wishDiv);
+}
+
+function clicking(val){
+    console.log(val)
 }

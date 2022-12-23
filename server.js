@@ -19,6 +19,9 @@ app.get('/cart', (req, res) => {
     res.render('cart')
 })
 
+app.get('/mens', (req,res) => {
+    res.render('adidas-product')
+})
 
 app.listen(3030, () => {
     console.log('The Server is running...');

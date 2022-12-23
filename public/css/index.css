@@ -402,6 +402,18 @@ ul{
     cursor: pointer;
     margin: 0;
 }
+
+.item-grid{
+    display: grid;
+    box-sizing: border-box;
+    padding-right :40%;
+}
+.flex-item2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-content: center;
+}
 .mimg a div{
     width: -moz-fit-content;
     width: fit-content;
