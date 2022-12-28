@@ -58,8 +58,11 @@ app.post('/do-login', (req, res) => {
 })
 app.get('/do-logout', (req,res) => {
     req.session.destroy();
+    res.redirect('/')
 })
-
+app.get('/my-page3', (req,res) => {
+    //
+})
 app.get('/wishlists', (req, res) => {
     res.render('wishilists',{
         id: req.session.uid,
