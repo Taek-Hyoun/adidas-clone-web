@@ -7,7 +7,7 @@ function select(id, pw) {
                 if (err) throw err;
                 
                 if (rs.length > 0) {
-                    console.log(123);
+                    console.log('succeeds');
                     resolve(rs[0]);
                 }
             })

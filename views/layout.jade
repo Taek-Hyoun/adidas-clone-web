@@ -200,8 +200,13 @@ html(lang='en')
                                 .do-search-box
                                     i.fa-solid.fa-magnifying-glass
                     .icon-group
-                        a(href='account-login')
-                            i.fa-solid.fa-user
+                        if id
+                            a(href='mypage')
+                                i.fa-solid.fa-user
+                        else
+                            console.log('shit')
+                            a(href='account-login')
+                                i.fa-solid.fa-user
                         a(href='wishlists')
                             i.fa-solid.fa-thumbs-up
                         a(href='cart')
