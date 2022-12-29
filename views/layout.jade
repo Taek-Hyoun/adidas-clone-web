@@ -28,12 +28,12 @@ html(lang='en')
     link(rel='stylesheet' href='/css/responsive.css' media='screen and (min-width: 320px) and (max-width: 1242px)')
     title online shop
   body
-    
-    .sticky-box
-        .inner-sticky
-            div() 상담하기
-            a(href='/settings') 환경설정
-            a(href='/do-logout') 로그아웃
+    if id
+        .sticky-box
+            .inner-sticky
+                div() 상담하기
+                a(href='/settings') 환경설정
+                a(href='/do-logout') 로그아웃
     .header
         .dark-bar
             a.displayed(href='#') 가입/로그인/배송지 입력 안내
