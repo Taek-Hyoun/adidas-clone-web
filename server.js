@@ -68,7 +68,6 @@ app.get('/wishlists', (req, res) => {
         id: req.session.uid,
         isTrue: req.session.isLogined,
     });
-    console.log(req.session.uid, req.session.isLogined);
 })
 app.get('/cart', (req, res) => {
     res.render('cart',{
