@@ -12,6 +12,7 @@ body{
     gap: 3px;
     width: calc(100% - 14% - 3px);
     padding: 7%;
+    margin-top: 111px;
 }
 .img{
     width: 100%;
