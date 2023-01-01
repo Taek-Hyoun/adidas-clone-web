@@ -22,7 +22,7 @@ for(let i = 0; i < arr.length; i++){
             </div>
             <div class="product-name">${arr[i].name}</div>
             <div class="product-category">${arr[i].category}</div>
-            <div class="wishBtn" onclick="shit(${arr[i].index})">
+            <div class="wishBtn" onclick="shit(${arr[i].index}, this)">
                 <i class="fa-solid fa-thumbs-up">
                 </i>
             </div>
@@ -36,6 +36,12 @@ function clicking(val){
     console.log(val)
 }
 
-shit = (param) => {
-    document.cookie = JSON.stringify(arr[param]) + ";" + "max-age=300";
+shit = (param, ele) => { //익명함수
+    if(ele.style.backgroundColor != 'gold'){ //if not gold
+        document.cookie += JSON.stringify(arr[param]) + ";";
+        ele.style.backgroundColor = 'gold'
+    }else{ //if gold
+        ele.style.backgroundColor = 'grey'
+        //쿠키삭제 미구현
+    }
 }

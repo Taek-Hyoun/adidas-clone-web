@@ -2,29 +2,67 @@ extends layout
 block content
     head
         link(rel='stylesheet' href='/css/wishilists.css')
+        link(rel='stylesheet' href='css/adidas-product.css')
     body.w-100.h-100
             div.ByTk-myWishListContainer.w-fit.m-auto
-                div.h2
-                    | 나의 관심 목록
-                div
-                    div
-                        | 총 0 주문 상품
-                    div
-                        | 아직 관심 목록에 저장한 항목이 없습니다. 쇼핑을 시작하고 관심목록에 좋아하는 제품을 추가하세요.
     script.
         let cookies = []
 
-        if(document.cookie.length){
-            cookies.push(JSON.parse(document.cookie))
+        if(document.cookie){
+            let cookie = document.cookie;
+            let i = 0;
+
+            for(str of cookie){ //배열 길이를 지정하지않아 undefined가 들어가는 것을 방지
+                if(str == '{'){
+                    cookies[i] = '';
+                }
+
+                if(str == '}'){
+                    cookies[i] += str;
+                    i++;
+                }else{
+                    cookies[i] += str;
+                }
+            }
+
+            for(let i = 0; i < cookies.length; i++){
+                cookies[i] = JSON.parse(cookies[i]);
+            }
+            console.log(cookies);
             setWish();
         }
 
         function setWish(){
-            if(1){
-                let container = document.getElementsByClassName('ByTk-myWishListContainer');
-                let box = document.createElement('div');
-                box.innerHTML = ''
+            let container = document.getElementsByClassName('ByTk-myWishListContainer');
+            let box = document.createElement('div');
+            box.setAttribute('class', 'product-container')
+
+            if(cookies.length >= 1){
+                for(let i = 0; i < cookies.length; i++){
+                    let newDiv = document.createElement('div');
+                    newDiv.setAttribute('class', 'shoes mos' + i + '')
+                    newDiv.innerHTML = `
+                        <div class="shoes mos${i}">
+                            <div class="img">
+                            </div>
+                            <div class="product-name">${cookies[i].name}</div>
+                            <div class="product-category">${cookies[i].category}</div>
+                            <div class="wishBtn" onclick="shit(${cookies[i].index})">
+                                <i class="fa-solid fa-thumbs-up">
+                                </i>
+                            </div>
+                        </div>
+                    `
+                    box.appendChild(newDiv);
+                }
                 container[0].appendChild(box);
+            }else{
+                container[0].innerHTML = `
+                    <div class='h2'>나의 관심 목록</div>
+                    <div>
+                        <div>총 0 주문 상품<div>
+                        <div>아직 관심 목록에 저장한 항목이 없습니다. 쇼핑을 시작하고 관심목록에 좋아하는 제품을 추가하세요.</div>
+                `
             }
         }
     script(src='js/js.js')

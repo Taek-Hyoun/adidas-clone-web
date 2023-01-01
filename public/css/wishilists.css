@@ -13,7 +13,7 @@ body{
     width: 100%;
 }
 .w-fit{
-    width: fit-content;
+    width: 100%;
 }
 .m-auto{
     margin: auto;
