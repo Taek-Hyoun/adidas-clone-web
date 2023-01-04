@@ -22,7 +22,7 @@ for(let i = 0; i < arr.length; i++){
             </div>
             <div class="product-name">${arr[i].name}</div>
             <div class="product-category">${arr[i].category}</div>
-            <div class="wishBtn" onclick="shit(${arr[i].index}, this)">
+            <div class="wishBtn" onclick="getCookie(${arr[i].index}, this)">
                 <i class="fa-solid fa-thumbs-up">
                 </i>
             </div>
@@ -36,12 +36,51 @@ function clicking(val){
     console.log(val)
 }
 
-shit = (param, ele) => { //익명함수
-    if(ele.style.backgroundColor != 'gold'){ //if not gold
-        document.cookie += JSON.stringify(arr[param]) + ";";
-        ele.style.backgroundColor = 'gold'
-    }else{ //if gold
-        ele.style.backgroundColor = 'grey'
-        //쿠키삭제 미구현
+var cookies = [];
+
+parseCookie = () => { //익명함수
+
+    if(document.cookie){
+        let cookie = document.cookie;
+        let i = 0;
+
+        for(str of cookie){ //배열 길이를 지정하지않아 undefined가 들어가는 것을 방지
+            if(str == '{'){
+                cookies[i] = '';
+            }
+
+            if(str == '}'){
+                cookies[i] += str;
+                i++;
+            }else{
+                cookies[i] += str;
+            }
+        }
+        for(let i = 0; i < cookies.length; i++){
+            cookies[i] = JSON.parse(cookies[i]);
+        }
     }
+}
+parseCookie();
+
+function setCookie(param, ele){
+    document.cookie += JSON.stringify(arr[param]) + ";" + "max-age: 60;";
+    parseCookie()
+}
+function getCookie(param, ele){
+
+        if(cookies.indexOf(arr[param]) !== -1){
+            console.log(cookies.indexOf(arr[param]));
+            console.log(arr[param])
+            ele.style.backgroundColor = 'grey';
+            //쿠키삭제 코드
+        }else{// if there's no cookie in array cookies
+            console.log('없음')
+            ele.style.backgroundColor = 'gold';
+            setCookie(param,ele);
+        }
+}
+
+function deleteCookie(){
+
 }
