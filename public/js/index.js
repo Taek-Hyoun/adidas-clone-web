@@ -10,6 +10,8 @@ for(let i = 0; i < arrOriginalShoes.length; i++){
         'index' : i,
         'name' : arrOriginalShoes[i],
         'category' : 'MensOriginalShoes',
+        'btn_color' : 'grey',
+        'isOn' : 'false'
         }
 }
 
@@ -30,10 +32,6 @@ for(let i = 0; i < arr.length; i++){
     `
 
     container[0].appendChild(newDiv);
-}
-
-function clicking(val){
-    console.log(val)
 }
 
 var cookies = [];
@@ -63,24 +61,28 @@ parseCookie = () => { //익명함수
 }
 parseCookie();
 
-function setCookie(param, ele){
-    document.cookie += JSON.stringify(arr[param]) + ";" + "max-age: 60;";
+function setCookie(p, mxAge){
+    document.cookie += JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';';
     parseCookie()
 }
 function getCookie(param, ele){
 
-        if(cookies.indexOf(arr[param]) !== -1){
-            console.log(cookies.indexOf(arr[param]));
-            console.log(arr[param])
-            ele.style.backgroundColor = 'grey';
+        if(JSON.parse(arr[param].isOn)){
+            console.log('shit')
+            arr[param].btn_color = 'grey';
+            arr[param].isOn = false;
+            ele.style.backgroundColor = arr[param].btn_color;
             //쿠키삭제 코드
+            deleteCookie(param, -1);
         }else{// if there's no cookie in array cookies
-            console.log('없음')
-            ele.style.backgroundColor = 'gold';
-            setCookie(param,ele);
+            arr[param].btn_color = 'gold';
+            arr[param].isOn = true;
+            ele.style.backgroundColor = arr[param].btn_color;
+            setCookie(param,60);
         }
 }
 
-function deleteCookie(){
-
+function deleteCookie(p, mxAge){
+    document.cookie += JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';';
+    console.log(document.cookie);
 }
