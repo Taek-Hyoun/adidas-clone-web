@@ -60,7 +60,12 @@ parseCookie = () => { //익명함수
     }
 }
 parseCookie();
+console.log(cookies);
 
+for(let i = 0; i < cookies.length; i++){ //처음들어왔을 때 이전에 저장한 위시리스트가 있을 때 배경색을 바꾼다.
+    let divbox = document.getElementsByClassName(`shoes mos${Number(cookies[i].index)}`);
+    divbox[0].children[3].style.backgroundColor = 'red';
+}
 function setCookie(p, mxAge){
     document.cookie += JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';';
     parseCookie()
