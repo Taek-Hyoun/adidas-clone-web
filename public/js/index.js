@@ -64,30 +64,34 @@ console.log(cookies);
 
 for(let i = 0; i < cookies.length; i++){ //처음들어왔을 때 이전에 저장한 위시리스트가 있을 때 배경색을 바꾼다.
     let divbox = document.getElementsByClassName(`shoes mos${Number(cookies[i].index)}`);
-    divbox[0].children[3].style.backgroundColor = 'red';
+    arr[cookies[i].index].isOn = cookies[i].isOn;
+    arr[cookies[i].index].btn_color = cookies[i].btn_color;
+    divbox[0].children[3].style.backgroundColor = arr[cookies[i].index].btn_color;
 }
 function setCookie(p, mxAge){
-    document.cookie += JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';';
+    console.log(JSON.stringify(arr[p]));
+    document.cookie = `index${p}=`+JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';';
     parseCookie()
 }
 function getCookie(param, ele){
 
         if(JSON.parse(arr[param].isOn)){
             console.log('shit')
+            deleteCookie(param, -1);
             arr[param].btn_color = 'grey';
             arr[param].isOn = false;
             ele.style.backgroundColor = arr[param].btn_color;
             //쿠키삭제 코드
-            deleteCookie(param, -1);
         }else{// if there's no cookie in array cookies
             arr[param].btn_color = 'gold';
             arr[param].isOn = true;
             ele.style.backgroundColor = arr[param].btn_color;
-            setCookie(param,60);
+            setCookie(param,300);
         }
 }
 
 function deleteCookie(p, mxAge){
-    document.cookie += JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';';
+    console.log(p, mxAge, `index${p}=`+JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';');
+    document.cookie = `index${p}=`+JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';';
     console.log(document.cookie);
 }
