@@ -75,7 +75,13 @@ app.get('/cart', (req, res) => {
         isTrue: req.session.isLogined,
     })
 })
-
+app.get('/purchase', (req, res) => {
+    if(req.session.isLogined){
+        res.render('purchase')
+    }else{
+        res.redirect('/account-login')
+    }
+})
 app.get('/mens', (req,res) => {
     res.render('adidas-product',{
         id: req.session.uid,

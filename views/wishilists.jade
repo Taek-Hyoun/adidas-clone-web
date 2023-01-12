@@ -2,36 +2,51 @@ extends layout
 block content
     head
         link(rel='stylesheet' href='/css/wishilists.css')
-        link(rel='stylesheet' href='css/adidas-product.css')
+        //- link(rel='stylesheet' href='css/adidas-product.css')
     body.w-100.h-100
+        div.wish-box
             div.ByTk-myWishListContainer.w-fit.m-auto
+            div.count
     script.
-        let cookies = []
+        var cookies = [];
+        function load(){
 
-        if(document.cookie){
-            let cookie = document.cookie;
-            let i = 0;
+            if(document.cookie){
+                let cookie = document.cookie;
+                let i = 0;
 
-            for(str of cookie){ //배열 길이를 지정하지않아 undefined가 들어가는 것을 방지
-                if(str == '{'){
-                    cookies[i] = '';
+                for(str of cookie){ //배열 길이를 지정하지않아 undefined가 들어가는 것을 방지
+                    if(str == '{'){
+                        cookies[i] = '';
+                    }
+
+                    if(str == '}'){
+                        cookies[i] += str;
+                        i++;
+                    }else{
+                        cookies[i] += str;
+                    }
                 }
 
-                if(str == '}'){
-                    cookies[i] += str;
-                    i++;
-                }else{
-                    cookies[i] += str;
+                for(let i = 0; i < cookies.length; i++){
+                    cookies[i] = JSON.parse(cookies[i]);
                 }
+                setWish();
+            }else{
+                setError();
             }
-
-            for(let i = 0; i < cookies.length; i++){
-                cookies[i] = JSON.parse(cookies[i]);
-            }
-            console.log(cookies);
-            setWish();
-        }else{
-            setError();
+        }
+        load();
+        function setCount(){
+            let box = document.getElementsByClassName('count')[0];
+            box.innerHTML = `
+                <div class="counter">
+                    wishlists : ${cookies.length}개
+                </div>
+                <div class="purchase">
+                    <a href='/purchase'> 구매하기</a>
+                </div>
+            `
         }
         function setWish(){
             let container = document.getElementsByClassName('ByTk-myWishListContainer');
@@ -39,7 +54,6 @@ block content
             box.setAttribute('class', 'product-container')
 
             if(cookies.length >= 1){
-                console.log(2);
                 for(let i = 0; i < cookies.length; i++){
                     let newDiv = document.createElement('div');
                     newDiv.setAttribute('class', 'shoes mos' + i + '')
@@ -49,16 +63,24 @@ block content
                             </div>
                             <div class="product-name">${cookies[i].name}</div>
                             <div class="product-category">${cookies[i].category}</div>
-                            <div class="wishBtn" onclick="shit(${cookies[i].index})">
+                            <div class="wishBtn" onclick="deleteCookie(${cookies[i].index}, -1)">
                                 <i class="fa-solid fa-thumbs-up">
                                 </i>
                             </div>
                         </div>
+                        
                     `
                     box.appendChild(newDiv);
                 }
+                setCount();
                 container[0].appendChild(box);
             }
+        }
+        function deleteCookie(p, mxAge){
+            obj = (cookies.filter(obj => obj.index == p));
+            document.cookie = `index${p}=`+JSON.stringify(obj) + ";" + 'max-age='+ mxAge +';';
+            cookies = (cookies.filter(obj => obj.index !== p));
+            location.reload();
         }
         function setError(){
             let container = document.getElementsByClassName('ByTk-myWishListContainer');
@@ -69,4 +91,5 @@ block content
                         <div>아직 관심 목록에 저장한 항목이 없습니다. 쇼핑을 시작하고 관심목록에 좋아하는 제품을 추가하세요.</div>
                 `
         }
+
     script(src='js/js.js')

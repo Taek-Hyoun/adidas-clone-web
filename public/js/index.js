@@ -91,7 +91,7 @@ function getCookie(param, ele){ //쿠키 가져오기
             arr[param].btn_color = 'gold';
             arr[param].isOn = true;
             ele.style.backgroundColor = arr[param].btn_color;
-            setCookie(param,20);
+            setCookie(param,3600);
         }
 }
 
