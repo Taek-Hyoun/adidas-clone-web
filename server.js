@@ -23,8 +23,8 @@ app.use(session({
   store: sessionStore,
   cookie: {
     // Session expires after 1 min of inactivity.
-    expires: new Date(Date.now() + 60 * 1000), // plus 1 minute
-    maxAge: 60 * 1000 //1 minute
+    // expires: new Date(Date.now() + 60 * 1000), // plus 1 minute
+    // maxAge: 60 * 1000 //1 minute
   }                                      
 }))
 
@@ -77,10 +77,20 @@ app.get('/cart', (req, res) => {
 })
 app.get('/purchase', (req, res) => {
     if(req.session.isLogined){
-        res.render('purchase')
+        outModule.selectUserInfo(req.session.uid).then(
+            (rs) => {
+                console.log(rs);
+                //db를 외부조인해서 아이디에 맞는 유저정보를 가져와서 펄체이스 페이지에 뿌린다.
+                //뿌린정보를 템플릿엔진의 인풋들에다 맞게 뿌린다.
+            }
+        )
+        res.render('purchase', {})
     }else{
         res.redirect('/account-login')
     }
+})
+app.post('check-order', (req, res) => {
+    res.render('check')
 })
 app.get('/mens', (req,res) => {
     res.render('adidas-product',{
