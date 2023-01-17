@@ -47,16 +47,17 @@ html(lang='en')
 
   script(src="js/purchase.js")
   script.
-    if(cookies.length >= 1){
-        let product = {
-          'name' : cookies.name,
-          'price' : cookies.price,
-          'count' : cookies.count,
+    let product_proto = {
           increase : function(){
-
+            this.count++;
           },
           decrease: function(){
-
+            this.count--;
           },
-        }
     }
+    let product = cookies;
+    for(let i = 0; i < product.length; i++){
+      product[i].__proto__ = product_proto;
+    }
+    console.log(product);
+    console.log(product);

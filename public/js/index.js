@@ -14,7 +14,7 @@ for(let i = 0; i < arrOriginalShoes.length; i++){
         'isOn' : 'false',
         'price' : 20000,
         'count' : 1,
-        }
+    }
 }
 
 for(let i = 0; i < arr.length; i++){
@@ -77,6 +77,7 @@ for(let i = 0; i < cookies.length; i++){ //처음들어왔을 때 이전에 저�
 
 function setCookie(p, mxAge){ //쿠키세팅
     let cookie = `index${p}=`+JSON.stringify(arr[p]) + ";" + 'max-age='+mxAge+';'
+    console.log(cookie);
     document.cookie = cookie;
     parseCookie(cookie);
 }
