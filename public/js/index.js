@@ -11,7 +11,9 @@ for(let i = 0; i < arrOriginalShoes.length; i++){
         'name' : arrOriginalShoes[i],
         'category' : 'MensOriginalShoes',
         'btn_color' : 'grey',
-        'isOn' : 'false'
+        'isOn' : 'false',
+        'price' : 20000,
+        'count' : 1,
         }
 }
 
