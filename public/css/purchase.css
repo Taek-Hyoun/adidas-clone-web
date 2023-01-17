@@ -12,17 +12,15 @@ body{
 label{
     font-weight: 500;
 }
-.contaier{
+.container{
     position: absolute;
     background-color: grey;
     width: 40%;
     height: 70%;
-    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
     box-sizing: border-box;
-    
 }
 .inner-container{
     margin-left: 10%;
@@ -94,6 +92,12 @@ select{
 }
 .w80{
     width: 80%;
+}
+.left30{
+    left: 30%;
+}
+.left70{
+    left: 70%;
 }
 .ubuntu{
     font-family: 'Ubuntu', sans-serif;
