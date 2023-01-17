@@ -7,40 +7,56 @@ html(lang='en')
     link(rel='stylesheet' href='/css/purchase.css') 
     link(href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet")
   body
-    .contaier.ubuntu
+    .container.left30 
+
+    .container.ubuntu.left70
       .inner-container
-        form(action="")
+        form(action="/check-order" METHOD='POST')
           div.category
             label(for="addres")
             |Address
-            input(type="text" id="address" placeholder="Address" name="addr")
+            input(type="text" id="address" placeholder="Address" name="addr" value=userInfo.address)
           
           div.inline.category
             div
               label(for="name")
               |Name
-            input(type="text" id="name" placeholder="Name" name="name")
+            input(type="text" id="name" placeholder="Name" name="name" value=userInfo.name)
 
           div.inline.category
             div
               label(for="phone")
               |Phone
-            input(type="tel" id="phone" placeholder="Phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}")
+            input(type="tel" id="phone" placeholder="Phone" name="phone" value=userInfo.phone pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}")
 
           div.inline-em.category.flex
             div
               label(for="em")
               |E-mail
-              input(type="text" id="em" placeholder="email" name="email")
+              input(type="text" id="em" placeholder="email" name="emailName")
             div.inline.category.w30.selectbox
               label Choose
-              select(name="email")
+              select(name="emailAddress")
                 option(value="@naver.com") @naver.com 
                 option(value="@kakao.com") @kakao.com 
                 option(value="@daum.net") @daum.net 
                 option(value="@nate.net") @nate.net 
                 option(value="@google.com") @google.com
           .category 
-            button.create.w80(type='submit') Create
+            button.create.w80(type='submit') Order
 
+  script(src="js/purchase.js")
   script.
+    if(cookies.length >= 1){
+        let product = {
+          'name' : cookies.name,
+          'price' : cookies.price,
+          'count' : cookies.count,
+          increase : function(){
+
+          },
+          decrease: function(){
+
+          },
+        }
+    }
