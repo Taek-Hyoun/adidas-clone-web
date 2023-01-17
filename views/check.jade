@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/purchase.css') 
+    link(href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet")
+  body
+    .container
+        h1 주문성공
+        table(style="border: 1px solid black; border-collapse: collapse;")
+            th 주문자
+            th 전화번호
+            th 주소
+            tr 
+                td=order.name
+                td=order.phone 
+                td=order.addr
