@@ -1,6 +1,7 @@
 const db = require('./db');
 const bp = require('body-parser');
 const outModule = require('../adidas-clone-web/public/js/modules');
+var bodyParser = require('body-parser')
 
 var express = require('express')
 var router = express.Router();
@@ -78,19 +79,21 @@ app.get('/cart', (req, res) => {
 app.get('/purchase', (req, res) => {
     if(req.session.isLogined){
         outModule.selectUserInfo(req.session.uid).then(
-            (rs) => {
-                console.log(rs);
-                //db를 외부조인해서 아이디에 맞는 유저정보를 가져와서 펄체이스 페이지에 뿌린다.
-                //뿌린정보를 템플릿엔진의 인풋들에다 맞게 뿌린다.
+            (userInformation) => {
+                res.render('purchase', {
+                    userInfo : userInformation
+                })
             }
         )
-        res.render('purchase', {})
     }else{
         res.redirect('/account-login')
     }
 })
-app.post('check-order', (req, res) => {
-    res.render('check')
+app.post('/check-order', (req, res) => {
+    let orderInfo = req.body;
+    res.render('check', {
+        order : orderInfo
+    })
 })
 app.get('/mens', (req,res) => {
     res.render('adidas-product',{
