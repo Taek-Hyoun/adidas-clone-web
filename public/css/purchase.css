@@ -22,6 +22,12 @@ label{
     border-radius: 20px;
     box-sizing: border-box;
 }
+.product-info-container{
+    width: 100%;
+    height: 100%;
+    overflow:auto;
+    border-radius: 20px;
+}
 .inner-container{
     margin-left: 10%;
     margin-right: 10%;

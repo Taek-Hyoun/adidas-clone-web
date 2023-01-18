@@ -7,7 +7,8 @@ html(lang='en')
     link(rel='stylesheet' href='/css/purchase.css') 
     link(href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet")
   body
-    .container.left30 
+    .container.left30
+      .product-info-container
 
     .container.ubuntu.left70
       .inner-container
@@ -47,6 +48,7 @@ html(lang='en')
 
   script(src="js/purchase.js")
   script.
+    console.log(document.getElementsByClassName('product-info-container')[0].style)
     let product_proto = {
           increase : function(){
             this.count++;
@@ -56,8 +58,19 @@ html(lang='en')
           },
     }
     let product = cookies;
-    for(let i = 0; i < product.length; i++){
-      product[i].__proto__ = product_proto;
+  
+    function setProduct(){
+      let container = document.getElementsByClassName('product-info-container')[0];
+      for(let i = 0; i < product.length; i++){
+        product[i].__proto__ = product_proto;
+
+        let newdiv = document.createElement('div');
+        newdiv.innerHTML = `
+          <div>
+            제품 : ${product[i].name} 가격 : ${product[i].price} 수량 : ${product[i].count}
+          </div>
+        `
+        container.appendChild(newdiv);
+      }
     }
-    console.log(product);
-    console.log(product);
+    setProduct();
