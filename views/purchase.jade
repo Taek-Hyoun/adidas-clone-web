@@ -6,6 +6,7 @@ html(lang='en')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet' href='/css/purchase.css') 
     link(href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet")
+    script(src="https://kit.fontawesome.com/1c9b8c0219.js" crossorigin="anonymous")
   body
     .container.left30
       .product-info-container
@@ -48,17 +49,24 @@ html(lang='en')
 
   script(src="js/purchase.js")
   script.
-    console.log(document.getElementsByClassName('product-info-container')[0].style)
     let product_proto = {
-          increase : function(){
+          increase : function(i){
             this.count++;
+            render(i);
           },
-          decrease: function(){
+          decrease: function(i){
             this.count--;
+            render(i);
           },
     }
     let product = cookies;
-  
+
+    function render(i){
+        let div = document.getElementsByClassName('items'+i);
+        let child = div[0].children[2]
+        child.innerHTML = product[i].count;
+    }
+
     function setProduct(){
       let container = document.getElementsByClassName('product-info-container')[0];
       for(let i = 0; i < product.length; i++){
@@ -66,8 +74,20 @@ html(lang='en')
 
         let newdiv = document.createElement('div');
         newdiv.innerHTML = `
-          <div>
-            제품 : ${product[i].name} 가격 : ${product[i].price} 수량 : ${product[i].count}
+          <div class='item-wrapper'>
+            <div class='item items${i}'>
+              제품 : <a>${product[i].name}</a> 
+              가격 : <a>${product[i].price}</a> 
+              수량 : <a id='count'>${product[i].count}</a>
+            </div>
+            <div class='btn-wrapper'>
+              <button class='item-btn' onClick="product[${i}].increase(${i})">
+                <i class="fa-solid fa-up-long"></i>
+              </button>
+              <button class='item-btn' onClick="product[${i}].decrease(${i})">
+                <i class="fa-solid fa-down-long"></i>
+              </button>
+            </div>
           </div>
         `
         container.appendChild(newdiv);
