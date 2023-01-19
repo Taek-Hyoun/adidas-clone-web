@@ -27,6 +27,7 @@ label{
     height: 100%;
     overflow:auto;
     border-radius: 20px;
+    padding: 5%;
 }
 .inner-container{
     margin-left: 10%;
@@ -74,6 +75,20 @@ select{
 .create:hover{
     background-color: rgb(255,100,100);
     cursor: pointer;
+}
+.item-wrapper{
+    width: 90%;
+    height: 50px;
+    border: 1px solid black;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+.item-btn{
+    display: block;
+    margin-left: 20px;
+}
+.item{
+    float: left;
 }
 .inline{
     width: 45%;
