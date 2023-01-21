@@ -58,17 +58,14 @@ block content
                     let newDiv = document.createElement('div');
                     newDiv.setAttribute('class', 'shoes mos' + i + '')
                     newDiv.innerHTML = `
-                        <div class="shoes mos${i}">
-                            <div class="img">
-                            </div>
-                            <div class="product-name">${cookies[i].name}</div>
-                            <div class="product-category">${cookies[i].category}</div>
-                            <div class="wishBtn" onclick="deleteCookie(${cookies[i].index}, -1)">
-                                <i class="fa-solid fa-thumbs-up">
-                                </i>
-                            </div>
+                        <div class="img">
                         </div>
-                        
+                        <div class="product-name">${cookies[i].name}</div>
+                        <div class="product-category">${cookies[i].category}</div>
+                        <div class="wishBtn" onclick="deleteCookie(${cookies[i].index}, -1)">
+                            <i class="fa-solid fa-thumbs-up">
+                            </i>
+                        </div>
                     `
                     box.appendChild(newDiv);
                 }

@@ -31,10 +31,9 @@ body{
     margin-bottom: 30px;
 }
 .product-container{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
     margin-top: 111px;
 }
 .img{
@@ -51,7 +50,9 @@ body{
     height: 12.5%;
 }
 .shoes{
+    width: 20%;
     position: relative;
+    display: inline-block;
     height: 400px;
     border: 1px solid black;
 }

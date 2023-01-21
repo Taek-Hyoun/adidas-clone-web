@@ -83,6 +83,9 @@ select{
     line-height: 50px;
     margin-bottom: 20px;
 }
+.btn-wrapper{
+    display: inline-block;
+}
 .item-btn{
     display: block;
     margin-left: 20px;
@@ -122,4 +125,7 @@ select{
 }
 .ubuntu{
     font-family: 'Ubuntu', sans-serif;
+}
+.display{
+    display: inline-block;
 }
