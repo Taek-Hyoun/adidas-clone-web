@@ -89,8 +89,10 @@ app.get('/purchase', (req, res) => {
         res.redirect('/account-login')
     }
 })
-app.post('/check-order', (req, res) => {
+app.post('/success-order', (req, res) => {
     let orderInfo = req.body;
+    //여기에 디비코드 추가;
+    console.log(orderInfo);
     res.render('check', {
         order : orderInfo
     })

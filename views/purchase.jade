@@ -8,47 +8,49 @@ html(lang='en')
     link(href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet")
     script(src="https://kit.fontawesome.com/1c9b8c0219.js" crossorigin="anonymous")
   body
-    .container.left30
-      .product-info-container
+    div 
+      form(action="/success-order" METHOD='POST')
+        .container.left30
+          .product-info-container
 
-    .container.ubuntu.left70
-      .inner-container
-        form(action="/check-order" METHOD='POST')
-          div.category
-            label(for="addres")
-            |Address
-            input(type="text" id="address" placeholder="Address" name="addr" value=userInfo.address)
-          
-          div.inline.category
-            div
-              label(for="name")
-              |Name
-            input(type="text" id="name" placeholder="Name" name="name" value=userInfo.name)
+        .container.ubuntu.left70
+          .inner-container
+              div.category
+                label(for="addres")
+                |Address
+                input(type="text" id="address" placeholder="Address" name="addr" value=userInfo.address)
+              
+              div.inline.category
+                div
+                  label(for="name")
+                  |Name
+                input(type="text" id="name" placeholder="Name" name="name" value=userInfo.name)
 
-          div.inline.category
-            div
-              label(for="phone")
-              |Phone
-            input(type="tel" id="phone" placeholder="Phone" name="phone" value=userInfo.phone pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}")
+              div.inline.category
+                div
+                  label(for="phone")
+                  |Phone
+                input(type="tel" id="phone" placeholder="Phone" name="phone" value=userInfo.phone pattern="[0-9]{3}[0-9]{4}[0-9]{4}")
 
-          div.inline-em.category.flex
-            div
-              label(for="em")
-              |E-mail
-              input(type="text" id="em" placeholder="email" name="emailName")
-            div.inline.category.w30.selectbox
-              label Choose
-              select(name="emailAddress")
-                option(value="@naver.com") @naver.com 
-                option(value="@kakao.com") @kakao.com 
-                option(value="@daum.net") @daum.net 
-                option(value="@nate.net") @nate.net 
-                option(value="@google.com") @google.com
-          .category 
-            button.create.w80(type='submit') Order
-
+              div.inline-em.category.flex
+                div
+                  label(for="em")
+                  |E-mail
+                  input(type="text" id="em" placeholder="email" name="emailName")
+                div.inline.category.w30.selectbox
+                  label Choose
+                  select(name="emailAddress")
+                    option(value="@naver.com") @naver.com 
+                    option(value="@kakao.com") @kakao.com 
+                    option(value="@daum.net") @daum.net 
+                    option(value="@nate.net") @nate.net 
+                    option(value="@google.com") @google.com
+              .category 
+                button.create.w80(type='submit') Order
+              
   script(src="js/purchase.js")
   script.
+    let product = cookies;
     let product_proto = {
           increase : function(i){
             this.count++;
@@ -56,17 +58,30 @@ html(lang='en')
           },
           decrease: function(i){
             this.count--;
-            render(i);
+            if(this.count > 0){
+              render(i);
+            }
           },
+          calculate: function(){
+            let total = {
+              price : 0
+            };
+            for(let i = 0; i < product.length; i++){
+              total.price += Number(product[i].totalPrice);
+            }
+            return total;
+          }
     }
-    let product = cookies;
-
     function render(i){
         let div = document.getElementsByClassName('items'+i);
         let price = document.getElementsByClassName('display Price' + i)[0];
-        let child = div[0].children[2]
-        child.innerHTML = product[i].count;
+        let totalPrice = document.getElementsByClassName('totalPrice')[0];
+        let child = div[0]
+        child.children[2].children[0].value = product[i].count;
         price.innerHTML = '총 가격 => ' + Number(product[i].price) * Number(product[i].count);
+        product[i].totalPrice = Number(product[i].price) * Number(product[i].count);
+        totalPrice.innerHTML = product_proto.calculate().price;
+        child.children[1].children[0].value = product[i].totalPrice;
     }
 
     function setProduct(){
@@ -78,15 +93,15 @@ html(lang='en')
         newdiv.innerHTML = `
           <div class='item-wrapper'>
             <div class='item items${i}'>
-              <a>${product[i].name}</a>
-              <a>${product[i].price}</a>
-              <a id='count'>${product[i].count}</a>
+              <a><input value=${product[i].name} name="p_name" readonly/></a>
+              <a><input value=${product[i].totalPrice} name='price' readonly/></a>
+              <a id='count'><input value=${product[i].count} name='count' readonly/></a>
             </div>
             <div class='btn-wrapper'>
-              <button class='item-btn' onClick="product[${i}].increase(${i})">
+              <button type='button' class='item-btn' onClick="product[${i}].increase(${i})">
                 <i class="fa-solid fa-up-long"></i>
               </button>
-              <button class='item-btn' onClick="product[${i}].decrease(${i})">
+              <button type='button' class='item-btn' onClick="product[${i}].decrease(${i})">
                 <i class="fa-solid fa-down-long"></i>
               </button>
             </div>
@@ -95,13 +110,20 @@ html(lang='en')
         `
         container.appendChild(newdiv);
       }
-      //
+    }
+    function setTotalPrice(){
+      let container = document.getElementsByClassName('product-info-container')[0];
+      let getTotalPrice = product_proto.calculate();
       let newdiv = document.createElement('div');
       newdiv.innerHTML = `
         <div class='all-count'>
-          shit
+          <h3>주문하기</h3>
+          <div>
+            <i>totalPrice</i> : <a class='totalPrice'>${getTotalPrice.price}</a>
+          </div>
         </div>
       `
       container.appendChild(newdiv);
     }
     setProduct();
+    setTotalPrice();

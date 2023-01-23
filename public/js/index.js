@@ -13,6 +13,7 @@ for(let i = 0; i < arrOriginalShoes.length; i++){
         'btn_color' : 'grey',
         'isOn' : 'false',
         'price' : 20000,
+        'totalPrice': 20000,
         'count' : 1,
     }
 }
