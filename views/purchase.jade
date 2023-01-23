@@ -63,8 +63,10 @@ html(lang='en')
 
     function render(i){
         let div = document.getElementsByClassName('items'+i);
+        let price = document.getElementsByClassName('display Price' + i)[0];
         let child = div[0].children[2]
         child.innerHTML = product[i].count;
+        price.innerHTML = '총 가격 => ' + Number(product[i].price) * Number(product[i].count);
     }
 
     function setProduct(){
@@ -76,9 +78,9 @@ html(lang='en')
         newdiv.innerHTML = `
           <div class='item-wrapper'>
             <div class='item items${i}'>
-              제품 : <a>${product[i].name}</a> 
-              가격 : <a>${product[i].price}</a> 
-              수량 : <a id='count'>${product[i].count}</a>
+              <a>${product[i].name}</a>
+              <a>${product[i].price}</a>
+              <a id='count'>${product[i].count}</a>
             </div>
             <div class='btn-wrapper'>
               <button class='item-btn' onClick="product[${i}].increase(${i})">
@@ -88,9 +90,18 @@ html(lang='en')
                 <i class="fa-solid fa-down-long"></i>
               </button>
             </div>
+            <div class='display Price${i}'> 총 가격 ${product[i].price}</div>
           </div>
         `
         container.appendChild(newdiv);
       }
+      //
+      let newdiv = document.createElement('div');
+      newdiv.innerHTML = `
+        <div class='all-count'>
+          shit
+        </div>
+      `
+      container.appendChild(newdiv);
     }
     setProduct();
