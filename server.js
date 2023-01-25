@@ -91,8 +91,10 @@ app.get('/purchase', (req, res) => {
 })
 app.post('/success-order', (req, res) => {
     let orderInfo = req.body;
-    //여기에 디비코드 추가;
-    console.log(orderInfo);
+
+    for(let i = 0; i < orderInfo.p_name.length; i++){
+        outModule.insertOrderInfo(req.session.uid ,orderInfo.p_name[i], orderInfo.price[i], orderInfo.count[i], orderInfo.name, orderInfo.phone, orderInfo.addr)
+    }
     res.render('check', {
         order : orderInfo
     })

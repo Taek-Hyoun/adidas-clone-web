@@ -28,7 +28,26 @@ function selectUserInfo(id) {
         })
     })
 }
+function randomer(){
+    return '';
+}
+function insertOrderInfo(uid, productName, price, count, userName, phone, addr){
+    return new Promise((resolve, reject) => {
+        db.query(`insert into adidas.order(userid, product, price, count, userName, phone, address, ${ranomer()}) values(?,?,?,?,?,?,?,?)`,
+                    [uid, productName, price, count, userName, phone],function(err, rs, fd){
+            if (err){
+                throw err;
+            }
+            
+            if (rs) {
+                console.log('조회성공');
+                resolve(rs[0]);
+            }
+        })
+    })
+}
 module.exports = {
     select,
-    selectUserInfo
+    selectUserInfo,
+    insertOrderInfo
 }
